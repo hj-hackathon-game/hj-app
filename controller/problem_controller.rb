@@ -10,7 +10,19 @@ class ProblemController
 
   def self.answer(id, ans, time)
     raise BadRequestError unless (id.is_a?Integer) && (ans.is_a?Integer) && (time.is_a?Float)
-    
+    problem = Problem.find(id: id).first
+    raise BadRequestError unless problem.exists?
+    problem[:time] = time
+    if problem[:answer] == ans
+      result = {code: 200, result: 'ok'}
+    else
+      result = {code: 200, result: 'failed'}
+      problem[:wrong_answer] += 1
+    end
+    problem[:n] += 1
+    problem[:result] = problem[:wrong_answer].to_f/problem[:n].to_f + 2 * Math.sqrt(1.0/problem[:n])
+    problem.save!
+    result
   end
 
   def self.init
