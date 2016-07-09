@@ -18,4 +18,9 @@ class ProblemRoute < Sinatra::Base
       status, body = 400, {result: 'Bad Request'}.to_json
     end
   end
+
+  get '/predict' do
+    content_type :json
+    ProblemController.predict.to_json
+  end
 end

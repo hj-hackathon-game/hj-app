@@ -14,8 +14,10 @@ class ProblemController
     raise BadRequestError if problem.nil?
     problem[:time] = time
     if problem[:answer] == ans
+      problem[:last] = 1.0
       result = {result: 'ok'}
     else
+      problem[:last] = 0.0
       result = {result: 'failed'}
       problem[:wrong_number] += 1
     end
@@ -25,6 +27,11 @@ class ProblemController
     result
   end
 
+  def self.predict
+    Problem.order_by(problem_id:1).map do |problem|
+      [problem[:last], problem[:time]]
+    end.flatten
+  end
 
   def self.init
     Problem.create(

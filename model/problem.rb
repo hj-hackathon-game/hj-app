@@ -8,4 +8,5 @@ class Problem
   field :n, type: Float, default: 0.01
   field :result, type: Float, default: 20
   field :time, type: Float, default: 0
+  field :last, type: Float, default: 0
 end
