@@ -1,6 +1,6 @@
 development:
   clients:
     default:
-      database: db
+      database: hj
       hosts:
        - localhost:27017

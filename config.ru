@@ -11,6 +11,8 @@ require './route/status_route'
 
 require './controller/problem_controller'
 
+ProblemController.init unless Problem.exists?
+
 Faye::WebSocket.load_adapter('puma')
 
 use Rack::Static,

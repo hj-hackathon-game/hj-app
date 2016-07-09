@@ -2,7 +2,7 @@ class Problem
   include Mongoid::Document
   field :id, type: Integer
   field :description, type: String
-  field :answer, type: String
+  field :answer, type: Integer
 
   field :wrong_number, type: Integer, default: 0
   field :n, type: Float, default: 0.01
