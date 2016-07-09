@@ -15,7 +15,7 @@ class ProblemRoute < Sinatra::Base
       req = JSON.parse(request.body.read)
       ProblemController.answer(req['id'], req['ans'], req['time']).to_json
     rescue BadRequestError => e
-      {code: 400, result: 'Bad Request'}
+      status, body = 400, {result: 'Bad Request'}.to_json
     end
   end
 end
