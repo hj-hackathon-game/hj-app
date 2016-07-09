@@ -15,10 +15,10 @@ class ProblemController
     problem[:time] = time
     if problem[:answer] == ans
       problem[:last] = 1.0
-      result = {result: 'ok'}
+      result = {result: 'Correct!'}
     else
       problem[:last] = 0.0
-      result = {result: 'failed'}
+      result = {result: 'InCorrect'}
       problem[:wrong_number] += 1
     end
     problem[:n] += 1

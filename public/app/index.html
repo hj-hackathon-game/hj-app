@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Ms.Tutor</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//fonts.gmirror.org/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap-material-design/0.5.10/css/ripples.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-material-design/0.5.10/js/ripples.min.js"></script>
+    <script src="//cdn.bootcss.com/p5.js/0.5.2/p5.min.js"></script>
+    <script src="//cdn.bootcss.com/p5.js/0.5.2/addons/p5.sound.min.js"></script>
+    <script src="//cdn.bootcss.com/p5.js/0.5.2/addons/p5.dom.min.js"></script>
+    <script src="../js/echarts.min.js"></script>
+    <script src="../js/standalone.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/app.js"></script>
+</head>
+<body>
+<!-- Nav bar -->
+<div id="app">
+    <div class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="javascript:void(0)">Ms.Tutor</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-group">
+        <div v-for="box in chatHistory">
+            <div class="list-group-item" >
+                <div class="row-picture">
+                    <img v-if="box.role == 'Tutor'" class="circle" src="../img/777.png" alt="icon">
+                    <img v-if="box.role == 'User'" class="circle" src="../img/user.png" alt="icon">
+                </div>
+                <div class="row-content">
+                    <h4 class="list-group-item-heading">{{box.role}}</h4>
+                    <p class="list-group-item-text">{{box.text}}</p>
+                </div>
+            </div>
+            <div class="list-group-separator"></div>
+        </div>
+    </div>
+
+    <div style="text-align: center">
+        <a href="javascript:void(0)" class="btn btn-raised btn-primary" v-on:click='choose(0)'>A</a>
+        <a href="javascript:void(0)" class="btn btn-raised btn-primary" v-on:click='choose(1)'>B</a>
+        <a href="javascript:void(0)" class="btn btn-raised btn-primary" v-on:click='choose(2)'>C</a>
+        <a href="javascript:void(0)" class="btn btn-raised btn-primary" v-on:click='choose(3)'>D</a>
+    </div>
+
+    <div>
+        <div id="main" style="width: 400px;height:200px;"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
