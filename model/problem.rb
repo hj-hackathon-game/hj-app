@@ -7,4 +7,5 @@ class Problem
   field :wrong_number, type: Integer, default: 0
   field :n, type: Float, default: 0.01
   field :result, type: Float, default: 20
+  field :time, type: Float
 end

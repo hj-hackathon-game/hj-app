@@ -1,4 +1,18 @@
 class ProblemController
+
+  def self.request
+    problem = Problem.order_by(:result.desc).first
+    {
+        id: problem[:id],
+        description: problem[:description],
+    }
+  end
+
+  def self.answer(id, ans, time)
+    raise BadRequestError unless (id.is_a?Integer) && (ans.is_a?Integer) && (time.is_a?Float)
+    
+  end
+
   def self.init
     Problem.create(
         id: 0,
@@ -52,3 +66,5 @@ class ProblemController
     )
   end
 end
+
+class BadRequestError < StandardError; end
